@@ -2,6 +2,8 @@ import { FormEvent, useState } from 'react'
 import './Register.scss'
 import { User } from '../../types/data'
 import axios from 'axios'
+import { toast } from 'react-toastify';
+
 const Register = () => {
 
     const [name,setName] = useState('')
@@ -20,11 +22,17 @@ const Register = () => {
             password
         }
         if(password === password2){
-            axios.post('http://192.168.68.201:5000/api/auth/register',user)
+            axios.post('http://192.168.68.101:5000/api/auth/register',user)
             .then(({data})=>setUser(data))
-            .catch((err)=>console.log(err,'ошибка'))
+            .catch(()=> toast.error('ошибка при входе',{
+                position:'bottom-right'
+            }))
+            toast.success("вы прошли регистрацию",{
+                position:'bottom-right'
+            })
         }else{
-            console.error('error with password')
+            console.error('error with password',)
+           
         }
         
     }
@@ -51,11 +59,13 @@ const Register = () => {
                 <input onChange={(e)=>setPassword2(e.target.value)} type="text"  placeholder='Повторить пароль'/>
             </label>
             <button>Зарегестрироваться</button>
+            
             <p>У вас есть уже аккаунт?</p>
 
 
         </form>
       </div>
+     
     </div>
   )
 }

@@ -1,0 +1,30 @@
+.header{
+    background: #AC6C86;
+    color: white;
+    padding: 25px 0;
+    &__container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__left{
+        display: flex;
+        column-gap: 20px;
+        align-items: center;
+        input{
+            width: 180px;
+            height: 35px;
+        }
+    }
+    &__right{
+        display: flex;
+        column-gap: 15px;
+
+        ul{
+            display: flex;
+            font-size: 20px;
+            column-gap: 15px;
+            
+        }
+    }
+}
