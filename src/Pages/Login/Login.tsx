@@ -15,7 +15,7 @@ const Login = () => {
             email,
             password
         }
-        axios.post('http://192.168.68.101:5000/api/auth/login',user)
+        axios.post('http://192.168.68.175:5000/api/auth/login',user)
         .then(({data})=>{
             localStorage.setItem('accessToken',data.token.accessToken)
             localStorage.setItem('refreshToken',data.token.refreshToken)

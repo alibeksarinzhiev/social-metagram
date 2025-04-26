@@ -22,7 +22,7 @@ const Register = () => {
             password
         }
         if(password === password2){
-            axios.post('http://192.168.68.101:5000/api/auth/register',user)
+            axios.post('http://192.168.68.175:5000/api/auth/register',user)
             .then(({data})=>setUser(data))
             .catch(()=> toast.error('ошибка при входе',{
                 position:'bottom-right'

@@ -1,0 +1,32 @@
+.profile{
+    &__content{
+        width: 100%;
+        background: linear-gradient(90deg,rgba(215, 165, 144, 1) 50%, rgba(113, 87, 76, 1) 100%);
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 50px;
+    }
+    &__posts{
+
+        display: flex;
+        justify-content: space-between;
+        row-gap: 20px;
+        
+    }
+    &__post{
+        width: 30%;
+       
+
+        img{
+            width: 100%;
+            height: 350px;
+        }
+    }
+    &__comments{
+        display: flex;
+        column-gap: 20px;
+        font-size: 22px;
+        font-weight: bold;
+        justify-content: flex-end;
+    }
+}

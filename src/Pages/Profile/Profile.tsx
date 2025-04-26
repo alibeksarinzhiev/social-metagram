@@ -1,14 +1,19 @@
 import axios from "axios"
+import './Profile.scss'
 import { useEffect, useState } from "react"
 import { UserResponse } from "../../types/data"
+import { axiosWithToken } from "../../api/api"
 const Profile = () => {
     const [myProfile,setMyProfile] = useState<UserResponse>()
+    const [comment,setComment] = useState('')
     useEffect(()=>{
-        const accessToken = localStorage.getItem('accessToken')
-        axios.get('http://192.168.68.101:5000/api/auth/me',{headers:{Authorization:`Bearer ${accessToken}`}})
-        .then(({data})=>setMyProfile(data))
-        .catch((err)=>console.log(err))
+    axiosWithToken.get('/auth/me')
+    .then(({data})=>setMyProfile(data))
     },[])
+
+    const postComment = (id:string)=>{
+      axiosWithToken.post(`/posts/$${id}`)
+    }
 
     if(!myProfile){
         <div>loading</div>
@@ -25,7 +30,7 @@ const Profile = () => {
                 </div>
                 <div className="profile__about">
                     <div className="profile__names">
-                        <h3>{myProfile.username}</h3>
+                        <h3>{myProfile.username}</h3> 
                         <h4>{myProfile.posts.length === 0
                         ?0
                         :myProfile.posts.length} публикации</h4>
@@ -40,9 +45,15 @@ const Profile = () => {
         <div className="profile__posts">
           {myProfile.posts.map((el)=>(
             <div className="profile__post">
-            <img crossOrigin="anonymous" src={`http://192.168.68.101:5000/${el.image}`} alt="" />
+            <img crossOrigin="anonymous" src={`http://192.168.68.175:5000/${el.image}`} alt="" />
             <h3>{el.title}</h3>
             <p>{el.description}</p>
+            <div className="profile__comments">
+              <p>like</p>
+              <p>comment</p>
+            </div>
+            <input onChange={(e)=>setComment(e.target.value)} type="text" placeholder="введите комментарий" />
+            <button onClick={()=>postComment(el._id)}>add comment</button>
           </div>
           ))}
         </div>
