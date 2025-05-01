@@ -6,7 +6,7 @@ const Header = () => {
     <header className="header">
     <div className="header__container container">
         <div className="header__left">
-          <h2>METAGRAM</h2>
+          <h2><Link to={'/'}>METAGRAM</Link></h2>
           <input type="text" />
         </div>
         <div className="header__right">

@@ -12,7 +12,7 @@ const getAccessToken = () => localStorage.getItem('accessToken')
   localStorage.removeItem('accessToken')
   localStorage.removeItem('refreshToken')
 }
-const baseURL = 'http://192.168.68.175:5000/api'
+export const baseURL = 'http://192.168.68.134:5000/api/'
 
 export const axiosClassic = axios.create({
   baseURL,

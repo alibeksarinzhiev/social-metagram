@@ -5,6 +5,7 @@ import Login from "./Pages/Login/Login"
 import Layout from "./Layout/Layout"
 import Profile from "./Pages/Profile/Profile"
 import Post from "./Components/Post.tsx/Post"
+import Home from "./Pages/Home/Home"
 
 const App = () => {
   
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="/" element={<Layout/>}>
       <Route path="/profile" element={<Profile/>}/>
       <Route path="/post" element={<Post/>}/>
+      <Route path="" element={<Home/>}/>
       </Route>
       <Route path="/register" element={<Register/>}/>
       <Route path="/login" element={<Login/>}/>
